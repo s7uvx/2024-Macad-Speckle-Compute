@@ -7,7 +7,7 @@ def send_to_compute():
     #Credentials
     compute_rhino3d.Util.url = "http://3.78.144.62/"
     compute_rhino3d.Util.apiKey = "SpeckleCompute02"
-    send_to_compute_stream = "https://macad.speckle.xyz/streams/6c652abd66"
+    send_to_compute_stream = "https://macad.speckle.xyz/streams/e69b46ec48/branches/will%2Fsend"
     gh_definition = "example.ghx"
 
     gh_data = open(gh_definition, mode="r", encoding="utf-8-sig").read()
