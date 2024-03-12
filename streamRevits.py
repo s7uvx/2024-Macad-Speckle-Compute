@@ -7,19 +7,7 @@ from specklepy.api.client import SpeckleClient
 import rhinoinside
 rhinoinside.load()
 
-import clr
 
-# add reference to base system types e.g. Enum
-clr.AddReference('System.Core')
-
-# add reference to API provided by Rhino.Inside.Revit
-clr.AddReference('RhinoInside.Revit')
-
-# add reference to Revit API (two DLLs)
-clr.AddReference('RevitAPI') 
-clr.AddReference('RevitAPIUI')
-
-from RhinoInside.Revit import Revit, Convert
 
 # Our MaCAD server!
 server_url = "https://macad.speckle.xyz"
