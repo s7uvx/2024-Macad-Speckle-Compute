@@ -1,20 +1,48 @@
-# fly.toml app configuration file generated for willnash-test-morning-bird-4327 on 2024-03-02T12:21:04-08:00
+# fly.toml app configuration file generated for willnash-test2-patient-moon-452-snowy-wave-6493 on 2024-03-02T12:36:16-08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'willnash-test-morning-bird-4327'
+app = 'willnash-test2-patient-moon-452-snowy-wave-6493'
 primary_region = 'sea'
+kill_signal = 'SIGUSR1'
+kill_timeout = '5m0s'
+
+[experimental]
+  auto_rollback = true
 
 [build]
+  builtin = 'python'
 
-[http_service]
+  [build.settings]
+    pythonbase = '3.9-slim-buster'
+
+[env]
+  PORT = '8080'
+
+[[services]]
+  protocol = 'tcp'
   internal_port = 8080
-  force_https = true
-  auto_stop_machines = true
-  auto_start_machines = true
-  min_machines_running = 0
   processes = ['app']
+
+[[services.ports]]
+    port = 80
+    handlers = ['http']
+    force_https = true
+
+[[services.ports]]
+    port = 443
+    handlers = ['tls', 'http']
+
+  [services.concurrency]
+    type = 'connections'
+    hard_limit = 25
+    soft_limit = 20
+
+[[services.tcp_checks]]
+    interval = '15s'
+    timeout = '20s'
+    grace_period = '10s'
 
 [[vm]]
   memory = '1gb'
